@@ -13,5 +13,8 @@
   ],
   "author": "Adel Armand <adel.armand@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  }
 }
