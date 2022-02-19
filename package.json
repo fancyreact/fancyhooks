@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Apply FancY conditions to React hooks",
   "main": "index.js",
+  "scripts": {
+    "dtslint": "dtslint --localTs node_modules/typescript/lib types"
+  },
   "repository": "git@github.com:fancyreact/fancyhooks.git",
   "keywords": [
     "fancyhook",
