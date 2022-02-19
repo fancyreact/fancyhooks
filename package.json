@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Apply FancY conditions to React hooks",
   "main": "index.js",
+  "scripts": {
+    "dtslint": "dtslint --localTs node_modules/typescript/lib types"
+  },
   "repository": "git@github.com:fancyreact/fancyhooks.git",
   "keywords": [
     "fancyhook",
@@ -13,5 +16,9 @@
   ],
   "author": "Adel Armand <adel.armand@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "dtslint": "^4.2.1",
+    "typescript": "^4.5.5"
+  }
 }
