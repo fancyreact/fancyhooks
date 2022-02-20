@@ -4,6 +4,7 @@
   "description": "Apply FancY conditions to React hooks",
   "main": "index.js",
   "scripts": {
+    "eslint": "eslint . --ext .ts,.tsx",
     "dtslint": "dtslint --localTs node_modules/typescript/lib types"
   },
   "repository": "git@github.com:fancyreact/fancyhooks.git",
@@ -17,6 +18,76 @@
   "author": "Adel Armand <adel.armand@gmail.com>",
   "license": "MIT",
   "private": false,
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "airbnb"
+    ],
+    "ignorePatterns": [
+      "types",
+      "lib"
+    ],
+    "globals": {
+      "JSX": "readonly"
+    },
+    "env": {
+      "browser": true,
+      "jest": true
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [
+            ".ts",
+            ".tsx",
+            ".js",
+            ".jsx",
+            ".d.ts"
+          ]
+        }
+      }
+    },
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".ts",
+            ".tsx"
+          ]
+        }
+      ],
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          "ts": "never",
+          "tsx": "never"
+        }
+      ],
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          "max": 1,
+          "maxBOF": 1
+        }
+      ],
+      "import/order": [
+        "error",
+        {
+          "newlines-between": "always"
+        }
+      ],
+      "react/jsx-props-no-spreading": "off",
+      "import/prefer-default-export": "off",
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": true
+        }
+      ]
+    }
+  },
   "devDependencies": {
     "@typescript-eslint/parser": "^5.12.0",
     "dtslint": "^4.2.1",
