@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "eslint": "eslint . --ext .ts,.tsx",
-    "dtslint": "dtslint --localTs node_modules/typescript/lib types"
+    "dtslint": "dtslint --localTs node_modules/typescript/lib types",
+    "test": "jest",
+    "test:watch": "jest --watch --verbose"
   },
   "repository": "git@github.com:fancyreact/fancyhooks.git",
   "keywords": [
@@ -86,6 +88,20 @@
           "devDependencies": true
         }
       ]
+    }
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "<rootDir>/types/tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "<rootDir>/**/*.?(*.)+(spec|test).+(ts|tsx|js|jsx)"
+    ],
+    "transform": {
+      "\\.tsx?$": "ts-jest"
     }
   },
   "devDependencies": {
