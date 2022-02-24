@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "eslint": "eslint . --ext .ts,.tsx",
-    "dtslint": "dtslint --localTs node_modules/typescript/lib types"
+    "dtslint": "dtslint --localTs node_modules/typescript/lib types",
+    "test": "jest",
+    "test:watch": "jest --watch --verbose"
   },
   "repository": "git@github.com:fancyreact/fancyhooks.git",
   "keywords": [
@@ -88,7 +90,25 @@
       ]
     }
   },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "<rootDir>/types/tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "<rootDir>/**/*.?(*.)+(spec|test).+(ts|tsx|js|jsx)"
+    ],
+    "transform": {
+      "\\.tsx?$": "ts-jest"
+    }
+  },
   "devDependencies": {
+    "@testing-library/react": "^12.1.3",
+    "@types/jest": "^27.4.1",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
     "@typescript-eslint/parser": "^5.12.0",
     "dtslint": "^4.2.1",
     "eslint": "^8.9.0",
@@ -97,6 +117,10 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "jest": "^27.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "ts-jest": "^27.1.3",
     "typescript": "^4.5.5"
   }
 }
