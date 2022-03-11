@@ -4,6 +4,9 @@
   "description": "Apply FancY conditions to React hooks",
   "main": "index.js",
   "scripts": {
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir package/cjs",
+    "build": "npm run build:esm && npm run build:cjs",
     "eslint": "eslint . --ext .ts,.tsx",
     "dtslint": "dtslint --localTs node_modules/typescript/lib types",
     "test": "jest",
@@ -27,7 +30,7 @@
     ],
     "ignorePatterns": [
       "types",
-      "lib"
+      "package"
     ],
     "globals": {
       "JSX": "readonly"
