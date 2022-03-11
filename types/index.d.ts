@@ -1,1 +1,1 @@
-export type FancyHook = 'fancyHook';
+export * from './useFancyEffect';
