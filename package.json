@@ -6,7 +6,7 @@
   "scripts": {
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir package/cjs",
-    "build": "npm run build:esm && npm run build:cjs",
+    "build": "yarn build:esm && yarn run build:cjs",
     "del:package": "del package/*",
     "cpy:types": "cpy types/*.d.ts package --parents",
     "eslint": "eslint . --ext .ts,.tsx",
