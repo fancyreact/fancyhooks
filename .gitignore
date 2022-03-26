@@ -8,7 +8,10 @@
 
 # production
 /build
-/lib
+/package
+
+# scripts
+/scripts
 
 # misc
 .DS_Store

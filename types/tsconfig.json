@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "../lib/es",
+    "outDir": "../package/es",
     "module": "ESNext",
     "target": "ES5",
     "lib": ["DOM", "ESNext"],
@@ -12,8 +12,15 @@
     "esModuleInterop": true,
     "noImplicitReturns": true,
     "suppressImplicitAnyIndexErrors": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
   },
   "include": ["."],
-  "exclude": ["../node_modules", "../lib"]
+  "exclude": [
+    "../node_modules",
+    "../package",
+    "../src/utils/scripts",
+    "../src/**/*.test.ts",
+    "../src/**/*.test.tsx"
+  ]
 }
