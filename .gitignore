@@ -10,6 +10,9 @@
 /build
 /package
 
+# scripts
+/scripts
+
 # misc
 .DS_Store
 .env.local

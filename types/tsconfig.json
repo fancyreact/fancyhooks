@@ -16,5 +16,11 @@
     "resolveJsonModule": true
   },
   "include": ["."],
-  "exclude": ["../node_modules", "../package"]
+  "exclude": [
+    "../node_modules",
+    "../package",
+    "../src/utils/scripts",
+    "../src/**/*.test.ts",
+    "../src/**/*.test.tsx"
+  ]
 }
