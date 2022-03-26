@@ -6,6 +6,7 @@
   "scripts": {
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir package/cjs",
+    "build:package": "node scripts/sanitizePackage.utility",
     "build": "yarn build:esm && yarn run build:cjs",
     "del:package": "del package/*",
     "del:scripts": "del scripts/*",
@@ -14,7 +15,8 @@
     "dtslint": "dtslint --localTs node_modules/typescript/lib types",
     "test": "jest",
     "test:watch": "jest --watch --verbose",
-    "tsc:scripts": "tsc --module commonjs --esModuleInterop src/utils/scripts/**/*.utility.ts --outDir scripts"
+    "tsc:scripts": "tsc --module commonjs --esModuleInterop src/utils/scripts/**/*.utility.ts --outDir scripts",
+    "package": "yarn del:package && yarn build && yarn del:scripts && yarn tsc:scripts && yarn build:package && yarn cpy:types"
   },
   "repository": "git@github.com:fancyreact/fancyhooks.git",
   "keywords": [
