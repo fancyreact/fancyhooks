@@ -1,7 +1,7 @@
 {
   "name": "fancyhooks",
   "version": "0.0.0",
-  "description": "Apply FancY conditions to React hooks",
+  "description": "Apply FancY conditions to React Hooks",
   "main": "src/index.ts",
   "scripts": {
     "build:esm": "tsc",
@@ -11,7 +11,7 @@
     "del:package": "del package/*",
     "del:scripts": "del scripts/*",
     "cpy:types": "cpy types/*.d.ts package --parents",
-    "eslint": "eslint . --ext .ts,.tsx",
+    "eslint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "dtslint": "dtslint --localTs node_modules/typescript/lib types",
     "test": "jest",
     "test:watch": "jest --watch --verbose",
@@ -35,7 +35,9 @@
       "airbnb"
     ],
     "ignorePatterns": [
-      "types"
+      "types",
+      "package",
+      "scripts/**/*.js"
     ],
     "globals": {
       "JSX": "readonly"
