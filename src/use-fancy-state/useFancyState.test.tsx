@@ -73,24 +73,41 @@ describe('useFancyState', () => {
 
     const clicksBtn = screen.getByTestId('clicks');
 
+    // on mount
+    expect(fancyHelperMock).toHaveBeenCalledTimes(0);
     expect(clicksBtn.innerHTML).toEqual('0 clicks');
 
+    // mocked result -> true
     fireEvent.click(clicksBtn);
     expect(clicksBtn.innerHTML).toEqual('1 clicks');
+    expect(fancyHelperMock).toHaveBeenCalledTimes(1);
+    expect(fancyHelperMock).toHaveBeenLastCalledWith({ prevState: 0, newState: 1, count: 1 });
 
+    // mocked result -> false
     fireEvent.click(clicksBtn);
     expect(clicksBtn.innerHTML).toEqual('1 clicks');
+    expect(fancyHelperMock).toHaveBeenCalledTimes(2);
+    expect(fancyHelperMock).toHaveBeenLastCalledWith({ prevState: 1, newState: 2, count: 2 });
 
+    // mocked result -> true
     fireEvent.click(clicksBtn);
     expect(clicksBtn.innerHTML).toEqual('2 clicks');
+    expect(fancyHelperMock).toHaveBeenCalledTimes(3);
+    expect(fancyHelperMock).toHaveBeenLastCalledWith({ prevState: 1, newState: 2, count: 3 });
 
+    // mocked result -> true
     fireEvent.click(clicksBtn);
     expect(clicksBtn.innerHTML).toEqual('3 clicks');
+    expect(fancyHelperMock).toHaveBeenCalledTimes(4);
+    expect(fancyHelperMock).toHaveBeenLastCalledWith({ prevState: 2, newState: 3, count: 4 });
 
+    // mocked result -> false
     fireEvent.click(clicksBtn);
     fireEvent.click(clicksBtn);
     fireEvent.click(clicksBtn);
     expect(clicksBtn.innerHTML).toEqual('3 clicks');
+    expect(fancyHelperMock).toHaveBeenCalledTimes(7);
+    expect(fancyHelperMock).toHaveBeenLastCalledWith({ prevState: 3, newState: 4, count: 7 });
 
     done();
   });

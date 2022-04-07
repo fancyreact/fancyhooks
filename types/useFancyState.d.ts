@@ -24,7 +24,7 @@ export interface FancySetState<S> {
  * Accepts initial state and returns a stateful value, and a function to update it.
  *
  * @param initialState Initail state or a function that returns initial state.
- * @returns An array of initial state as first item and state setter as second item.
+ * @returns An array of state as first item and state setter as second item.
  *
  * @version 0.1.0
  */
