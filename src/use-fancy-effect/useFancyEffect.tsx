@@ -1,6 +1,6 @@
 import * as React from 'react';
-import cloneDeep from 'lodash/cloneDeep';
 
+import { deepClone } from '../utils';
 import { FancyEffectHelper } from '../../types';
 
 export function useFancyEffect(
@@ -10,16 +10,16 @@ export function useFancyEffect(
 ) {
   const depListRef = React.useRef<React.DependencyList>();
   const countRef = React.useRef(0);
-  const prevDeps = cloneDeep(depListRef.current);
 
   React.useEffect(() => {
-    depListRef.current = cloneDeep(dependencyList);
     countRef.current += 1;
 
     const passedFancyCondition = typeof fancyHelper === 'function' ? fancyHelper({
-      prevDeps, newDeps: dependencyList, count: countRef.current,
+      prevDeps: depListRef.current, newDeps: dependencyList, count: countRef.current,
     }) : true;
     const hasEmptyDependencies = Array.isArray(dependencyList) && dependencyList.length === 0;
+
+    depListRef.current = deepClone(dependencyList);
 
     if (hasEmptyDependencies || passedFancyCondition) {
       const callbackResult = callback();
@@ -27,6 +27,7 @@ export function useFancyEffect(
         return callbackResult;
       }
     }
+    // eslint hack!
     return undefined;
   }, dependencyList);
 }

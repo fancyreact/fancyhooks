@@ -221,6 +221,7 @@ describe('useFancyEffect', () => {
     render(<Component />);
 
     // first render
+    // mocked result -> true
     expect(callbackMock).toBeCalledTimes(1);
     expect(callbackMock).lastCalledWith(colors[0], 0);
     expect(fancyHelperMock).toBeCalledTimes(1);
@@ -239,6 +240,7 @@ describe('useFancyEffect', () => {
       prevDeps: undefined, newDeps: [colors[0]], count: 1,
     });
 
+    // mocked result -> true
     fireEvent.click(colorBtn);
     expect(callbackMock).toBeCalledTimes(2);
     expect(callbackMock).lastCalledWith(colors[1], 1);
@@ -247,6 +249,7 @@ describe('useFancyEffect', () => {
       prevDeps: [colors[0]], newDeps: [colors[1]], count: 2,
     });
 
+    // mocked result -> true
     fireEvent.click(colorBtn);
     expect(callbackMock).toBeCalledTimes(3);
     expect(callbackMock).lastCalledWith(colors[2], 1);
@@ -263,6 +266,7 @@ describe('useFancyEffect', () => {
       prevDeps: [colors[1]], newDeps: [colors[2]], count: 3,
     });
 
+    // mocked result -> true
     fireEvent.click(colorBtn);
     expect(callbackMock).toBeCalledTimes(4);
     expect(callbackMock).lastCalledWith(colors[3], 2);
