@@ -1,6 +1,6 @@
 {
   "name": "fancyhooks",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Apply FancY conditions to React Hooks",
   "main": "src/index.ts",
   "scripts": {
@@ -102,7 +102,9 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "modulePathIgnorePatterns": ["<rootDir>/package"],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/package"
+    ],
     "globals": {
       "ts-jest": {
         "tsconfig": "<rootDir>/types/tsconfig.json"
