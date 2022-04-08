@@ -1,5 +1,5 @@
 {
-  "name": "fancyhooks",
+  "name": "@fancyreact/fancyhooks",
   "version": "0.1.0",
   "description": "Apply FancY conditions to React Hooks",
   "main": "src/index.ts",
@@ -18,11 +18,15 @@
     "tsc:scripts": "tsc --module commonjs --esModuleInterop src/utils/scripts/**/*.utility.ts --outDir scripts",
     "package": "yarn del:package && yarn build && yarn del:scripts && yarn tsc:scripts && yarn build:package && yarn cpy:types"
   },
-  "repository": "git@github.com:fancyreact/fancyhooks.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fancyreact/fancyhooks.git"
+  },
   "keywords": [
-    "fancyhook",
+    "fancyhooks",
+    "fancyreact",
     "react",
-    "hook",
+    "hooks",
     "fancy",
     "condition"
   ],
@@ -145,5 +149,12 @@
   },
   "peerDependencies": {
     "react": "^17.0.2"
+  },
+  "bugs": {
+    "url": "https://github.com/fancyreact/fancyhooks/issues"
+  },
+  "homepage": "https://github.com/fancyreact/fancyhooks#readme",
+  "directories": {
+    "test": "tests"
   }
 }
