@@ -6,7 +6,7 @@ Fancy Hooks are set of hooks let you apply **conditions** to **React Hooks**.
 
 ## Know more
 
-I want to implement a search input. It gets data from API while user is typing.
+Assume that you want to implement a search input. It gets data from API while user is typing.
 But there is a restriction. To make a request to API there should be at least three characters into the input.
 
 ```js
@@ -39,7 +39,7 @@ With `useFancyEffect` you can bring the conditions to a `helper` function.
 ```js
 // App.jsx
 
-import { useFancyEffect } from 'fancyhooks';
+import { useFancyEffect } from '@fancyreact/fancyhooks';
 
 export function App() {
   const [input, setInput] = React.useState('');
@@ -55,7 +55,7 @@ export function App() {
     ({ newDeps }) => newDeps[0].length > 3,
   );
 
-  const handleChagen = (evt) => {
+  const handleChange = (evt) => {
     setInput(evt.target.value);
   };
 
@@ -63,13 +63,15 @@ export function App() {
 }
 ```
 
+[Play Online!](https://stackblitz.com/edit/fancyhooks-usefancyeffect-newdeps-1?devToolsHeight=33&file=index.tsx)
+
 `newDeps` is current dependency list passing in an object to `helper` by `useFancyEffect`.
 The `callback` functions will execute if the result of the `helper` function is `true`.
 
 ## Install
 
 ```
-$ npm install fancyhooks --save
+$ npm install @fancyreact/fancyhooks --save
 ```
 
 ## Documentation
