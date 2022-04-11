@@ -19,12 +19,12 @@ Here are a few examples explaining usage of `useFancyEffect`.
 
 ### newDeps
 
-Executes `callback` if `input` in dependency list is not empty.
+Executes `callback` if `input` is not empty.
 
 ```js
 // App.jsx
 
-import { useFancyEffect } from 'fancyhooks';
+import { useFancyEffect } from '@fancyreact/fancyhooks';
 
 export function App() {
   const [input, setInput] = React.useState('');
@@ -39,16 +39,18 @@ export function App() {
     [input],
     // Helper funcation,
     // allows executing the `callback` if `input` is not empty
-    ({ newDeps }) => newDeps[0].length > 0,
+    ({ newDeps }) => newDeps[0].length > 0
   );
 
-  const handleChagen = (evt) => {
+  const handleChange = (evt) => {
     setInput(evt.target.value);
   };
 
   return <input onChange={handleChange} value={input} />;
 }
 ```
+
+[Play Online!](https://stackblitz.com/edit/fancyhooks-usefancyeffect-newdeps-2?devToolsHeight=33&file=index.tsx)
 
 ### count
 
@@ -57,7 +59,7 @@ Executes `callback` if numer of dependency list updates are more than one.
 ```js
 // App.jsx
 
-import { useFancyEffect } from 'fancyhooks';
+import { useFancyEffect } from '@fancyreact/fancyhooks';
 
 export function App() {
   const [input, setInput] = React.useState('');
@@ -67,16 +69,17 @@ export function App() {
     // going to be executed
     () => {
       // API call...
+      console.log('Calling API...');
     },
     // Dependency list
     [input],
     // Helper funcation,
     // allows executing the `callback` if `input` changes more than on time,
     // helps you ignore first rendering
-    ({ count }) => count > 1,
+    ({ count }) => count > 1
   );
 
-  const handleChagen = (evt) => {
+  const handleChange = (evt) => {
     setInput(evt.target.value);
   };
 
@@ -84,21 +87,23 @@ export function App() {
 }
 ```
 
+[Play Online!](https://stackblitz.com/edit/fancyhooks-usefancyeffect-count-1?devToolsHeight=33&file=index.tsx)
+
 ### prevDeps
 
-Executes `callback` if values of state object changed.
-It prevents calling API if you click on clicked button once again.
+Executes `callback` if at least one of the values of state object not changed.
+It prevents calling API if both buttons are clickec and you click one of them once again.
 
 ```js
 // App.jsx
 
-import { useFancyEffect } from 'fancyhooks';
+import { useFancyEffect } from '@fancyreact/fancyhooks';
 
 export function App() {
-  const [filled, setFilled] = React.useState({ first: false, second: false });
+  const [clicked, setClicked] = React.useState({ first: false, second: false });
 
   const handleClick = (name) => {
-    setFilled({ ...filled, [name]: true });
+    setClicked({ ...clicked, [name]: true });
   };
 
   useFancyEffect(
@@ -106,30 +111,32 @@ export function App() {
     // going to be executed
     () => {
       // API call...
+      console.log('Calling API...');
     },
     // Dependency list
-    [filled],
+    [clicked],
     // Helper funcation,
-    // allows executing the `callback` if `filled` values changed
-    ({ newDeps, prevDeps }) => (
-      newDeps[0].first !== prevDeps[0].first || newDeps[0].second !== prevDeps[0].second
-    ),
+    // allows executing the `callback` at least one button not clicked,
+    // notice that initial `prevDeps` is `undefined`
+    ({ prevDeps }) => prevDeps && (!prevDeps[0].first || !prevDeps[0].second)
   );
 
   return (
     <>
-      <button onClick={() => handleClick('first')}>
-        first
-      </button>
-      <button onClick={() => handleClick('second')}>
-        second
-      </button>
+      <button onClick={() => handleClick('first')}>first</button>
+      <button onClick={() => handleClick('second')}>second</button>
     </>
   );
 }
 ```
 
+[Play Online!](https://stackblitz.com/edit/fancyhooks-usefancyeffect-prevdeps-1?devToolsHeight=33&file=index.tsx)
+
 ## More
+
+### Initial `prevDeps`
+
+Notice that inital value of `prevDeps` is undefined.
 
 ### How about `React.useEffect`
 
@@ -138,7 +145,7 @@ If you ignore `helper` function, the `useFancyEffect` acts just like `React.useE
 ```js
 // App.jsx
 
-import { useFancyEffect } from 'fancyhooks';
+import { useFancyEffect } from '@fancyreact/fancyhooks';
 
 export function App() {
   const [input, setInput] = React.useState('');

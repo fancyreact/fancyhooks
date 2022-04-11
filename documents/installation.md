@@ -1,7 +1,13 @@
 # Installation
 
-To install `fancyhooks` via `npm` use the following command.
+Install via NPM.
 
 ```
-$ npm install fancyhooks --save
+$ npm install @fancyreact/fancyhooks
+```
+
+Install via Yarn.
+
+```
+$ yarn add @fancyreact/fancyhooks
 ```
