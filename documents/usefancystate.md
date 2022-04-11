@@ -23,12 +23,12 @@ Here are a few examples explaining usage of `useFancyState`.
 
 ### newState
 
-Sets state if it is an even number.
+Sets state if it is less than four.
 
 ```js
 // App.jsx
 
-import { useFancyState } from 'fancyhooks';
+import { useFancyState } from '@fancyreact/fancyhooks';
 
 export function App() {
   const [clicks, setClicks] = useFancyState(0);
@@ -39,8 +39,8 @@ export function App() {
       // going to be set
       clicks + 1,
       // Helper function,
-      // allows setting the state if it's even
-      ({ newState }) => newState % 2 === 0,
+      // allows setting the state as long as it's divisible by four
+      ({ newState }) => newState % 4 !== 0
     );
   };
 
@@ -53,6 +53,8 @@ export function App() {
 }
 ```
 
+[Play Online!](https://stackblitz.com/edit/fancyhooks-usefancystate-newstate-1?devToolsHeight=33&file=index.tsx)
+
 ### count
 
 Sets state just 10 times.
@@ -60,7 +62,7 @@ Sets state just 10 times.
 ```js
 // App.jsx
 
-import { useFancyState } from 'fancyhooks';
+import { useFancyState } from '@fancyreact/fancyhooks';
 
 export function App() {
   const [input, setInput] = useFancyState('');
@@ -80,30 +82,34 @@ export function App() {
 }
 ```
 
+[Play Online!](https://stackblitz.com/edit/fancyhooks-usefancystate-count-1?devToolsHeight=33&file=index.tsx)
+
 ### prevState
 
-Sets the state object if its values changed.
-It prevents component update if you click on clicked button once again.
+Sets the state object if buttons are not filled.
+It prevents component update if both buttons are filled and you want to click them once again.
 
 ```js
 // App.jsx
 
-import { useFancyState } from 'fancyhooks';
+import { useFancyState } from '@fancyreact/fancyhooks';
 
 export function App() {
-  const [filled, setFilled] = useFancyState({ first: false, second: false });
+  const [filled, setFilled] = useFancyState({
+    updates: 0,
+    first: false,
+    second: false,
+  });
 
   const handleClick = (name) => {
     setFilled(
       // New state,
       // going to be set
-      { ...filled, [name]: true },
+      { ...filled, [name]: true, updates: filled.updates + 1 },
       // Helper function,
-      // allows setting the state object if its values changed,
+      // allows setting the state if one of the buttons are not filled,
       // helps you prevent extra updates
-      ({ newState, prevState }) => (
-        newState.first !== prevState.first || newState.second !== prevState.second
-      ),
+      ({ prevState }) => !prevState.first || !prevState.second
     );
   };
 
@@ -121,10 +127,13 @@ export function App() {
       >
         second
       </button>
+      <p>{`Updates ${filled.updates}`}</p>
     </>
   );
 }
 ```
+
+[Play Online!](https://stackblitz.com/edit/fancyhooks-usefancystate-prevstate-1?devToolsHeight=33&file=index.tsx)
 
 ## More
 
@@ -135,7 +144,7 @@ If you ignore `helper` function, the `fancySetState` acts just like setter funct
 ```js
 // App.jsx
 
-import { useFancyState } from 'fancyhooks';
+import { useFancyState } from '@fancyreact/fancyhooks';
 
 export function App() {
   const [input, setInput] = useFancyState('');
