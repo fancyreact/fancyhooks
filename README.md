@@ -52,7 +52,7 @@ export function App() {
     // (2) Dependency list
     [input],
     // (3) Helper
-    ({ newDeps }) => newDeps[0].length > 3,
+    ({ newDeps }) => newDeps[0].length > 2,
   );
 
   const handleChange = (evt) => {
@@ -70,8 +70,16 @@ The `callback` functions will execute if the result of the `helper` function is 
 
 ## Install
 
+Install via NPM.
+
 ```
-$ npm install @fancyreact/fancyhooks --save
+$ npm install @fancyreact/fancyhooks
+```
+
+Install via Yarn.
+
+```
+$ yarn add @fancyreact/fancyhooks
 ```
 
 ## Documentation
@@ -82,4 +90,4 @@ $ npm install @fancyreact/fancyhooks --save
 
 ## License
 
-MIT © [FancyHooks](https://github.com/fancyreact/fancyhooks)
+[MIT](LICENSE.md)
