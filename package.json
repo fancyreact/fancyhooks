@@ -12,12 +12,14 @@
     "del:scripts": "del scripts/*",
     "cpy:types": "cpy types/*.d.ts package --parents",
     "cpy:readme": "cpy ./README.md package",
+    "cpy:license": "cpy ./LICENSE.md package",
+    "cpy:docs": "yarn cpy:readme && yarn cpy:license",
     "eslint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "dtslint": "dtslint --localTs node_modules/typescript/lib types",
     "test": "jest",
     "test:watch": "jest --watch --verbose",
     "tsc:scripts": "tsc --module commonjs --esModuleInterop src/utils/scripts/**/*.utility.ts --outDir scripts",
-    "package": "yarn del:package && yarn build && yarn del:scripts && yarn tsc:scripts && yarn build:package && yarn cpy:types && yarn cpy:readme"
+    "package": "yarn del:package && yarn build && yarn del:scripts && yarn tsc:scripts && yarn build:package && yarn cpy:types && yarn cpy:docs"
   },
   "repository": {
     "type": "git",
