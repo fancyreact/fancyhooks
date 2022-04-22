@@ -1,12 +1,8 @@
 import * as React from 'react';
 
-export interface FancyEffectObject {
-  prevDeps?: React.DependencyList;
-  newDeps?: React.DependencyList;
-  count: number;
-}
+import { DependenciesObject } from '.';
 
-export type FancyEffectHelper = (fancyEffectObject: FancyEffectObject) => boolean;
+export type FancyEffectHelper = (fancyEffectObject: DependenciesObject) => boolean;
 
 /**
  * Accepts a callback that contains imperative, possibly effectful code.
