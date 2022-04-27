@@ -28,6 +28,7 @@ const config = {
           path: './documents',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: `${github}/website`,
+          lastVersion: 'current',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -59,6 +60,11 @@ const config = {
             label: 'Tutorial',
           },
           {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownActiveClassDisabled: true,
+          },
+          {
             href: github,
             label: 'GitHub',
             position: 'right',
@@ -88,6 +94,10 @@ const config = {
                 label: 'GitHub',
                 href: github,
               },
+              {
+                label: 'Give it a star!',
+                href: `${github}/stargazers`,
+              }
             ],
           },
         ],
