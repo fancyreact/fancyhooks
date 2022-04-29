@@ -1,6 +1,6 @@
 {
   "name": "@fancyreact/fancyhooks",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Apply FancY conditions to React Hooks",
   "main": "src/index.ts",
   "scripts": {
